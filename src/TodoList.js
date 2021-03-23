@@ -18,6 +18,12 @@ export function TodoList(){
         newTodos.splices(index, 1);
         setTodos(newTodos);
     }
+
+    const completeTodo = index =>{
+        const newTodos = {...todos};
+        newTodos[index].isCompleted = !newTodos[index].isCompleted;
+        setTodos(newTodos);
+    }
     return(
         <div>
         {todos.map((todo, index) => (
@@ -25,6 +31,7 @@ export function TodoList(){
             todo={todo}
             index={index}
             removeTodo={removeTodo}
+            completeTodo={completeTodo}
             />
         ))}
         <TodoForm addTodo={addTodo}/>
